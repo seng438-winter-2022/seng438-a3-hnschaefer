@@ -2,12 +2,12 @@
 
 **Lab. Report #3 – Code Coverage, Adequacy Criteria and Test Case Correlation**
 
-| Group \#:      |     |
+| Group \#:      |   30  |
 | -------------- | --- |
-| Student Names: |     |
-|                |     |
-|                |     |
-|                |     |
+| Student Names: |  Agam Aulakh   |
+|                |  Melanie Nguyen   |
+|                |  Jeff Rozsell   |
+|                |  Heidi Schaefer   |
 
 (Note that some labs require individual reports while others require one report
 for each group. Please see each lab document for details.)
@@ -29,12 +29,21 @@ Text…
 Text…
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
+## DataUtilitiesTest
+### Statement coverage
+### Branch coverage
+### Method coverage
+![image](https://user-images.githubusercontent.com/75228264/154872707-3dbecd61-7223-44f7-a6ec-d6b39ff73f79.png)
 
-Text…
+## RangeTest
+### Statement coverage
+### Branch coverage
+### Method coverage
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-Text…
+## Pros
+## Cons
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
