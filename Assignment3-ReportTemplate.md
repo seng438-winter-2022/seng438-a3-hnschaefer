@@ -25,7 +25,12 @@ Condition (if tool doesn’t support, you can change metric e.g. you might decid
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-Text…
+### CFG of shift()
+![](CFG-shift.png)
+### CFG of calculateColumnTotal()
+![](CFG-calculateColumnTotal.png)
+### DFG of shift()
+### DFG of calculateColumnTotal()
 
 # 3 A detailed description of the testing strategy for the new unit test
 
@@ -47,16 +52,55 @@ We will then provide a brief analysis and lessons learned from this assignment.
 Text…
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
+
 ## DataUtilitiesTest
+We tested:
+1. scale()
+2. shift() 
+3. getLength()
+4. getUpperBound()
+5. getLowerBound()
+
+#### pre-change
 ### Statement coverage
+![](DataUtilities-Statement-Coverage-pre.png)
 ### Branch coverage
+![](DataUtilities-Branch-Coverage-pre.png)
 ### Method coverage
+![](DataUtilities-Method-Coverage-pre.png)
+
+#### post-change
+### Statement coverage
+![](DataUtilities-Statement-Coverage-post.png)
+### Branch coverage
+![](DataUtilities-Branch-Coverage-post.png)
+### Method coverage
+![](DataUtilities-Method-Coverage-post.png)
 
 
 ## RangeTest
+We tested:
+1. calculateColumnTotal()
+2. calculateRowTotal()
+3. clone()
+4. createNumberArray()
+5. createNumberArray2D()
+
+#### pre-change
 ### Statement coverage
+![](Range-Statement-Coverage-pre.png)
 ### Branch coverage
+![](Range-Branch-Coverage-pre.png)
 ### Method coverage
+![](Range-Method-Coverage-pre.png)
+
+#### post-change
+### Statement coverage
+![](Range-Statement-Coverage-post.png)
+### Branch coverage
+![](Range-Branch-Coverage-post.png)
+### Method coverage
+![](Range-Method-Coverage-post.png)
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
@@ -69,7 +113,11 @@ Text…
 
 # 8 A discussion on how the team work/effort was divided and managed
 
-Text…
+For this assignment the work was split up initially into two groupings. On covered each of the overarching modules. Within each section there was pair work done until each phase was completed. The group then met up and discussed their results for the section. If there was any glaring differences or issues then each section was discussed before moving onto the next portion.
+
+The report was divided up into equal parts and assigned to be written and completed by all individuals. The lessons learned was done as a group at the end so that there could be a discussion between the group members.
+
+There was overall two group meetings and two individual section meetings for this lab. Then there was a small amount of individual work done by each group member.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
@@ -77,4 +125,4 @@ Text…
 
 # 10 Comments/feedback on the lab itself
 
-Text…
+The lab was a good exercise in learning how to improve test cases using the appropriate statistics and DFG diagrams. It was easy enough to follow, while being challenging enough for us to learn a fair amount.
