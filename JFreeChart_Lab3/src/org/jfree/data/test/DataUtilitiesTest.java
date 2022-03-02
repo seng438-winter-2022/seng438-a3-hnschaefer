@@ -20,6 +20,7 @@ public class DataUtilitiesTest extends DataUtilities {
     private Values2D valuesNeg;
 	private Mockery mockEmpty;
     private Values2D valuesEmpty;
+    private Mockery mockNull;
     private Values2D valuesNull = null;
     @BeforeClass public static void setUpBeforeClass() throws Exception {
     }

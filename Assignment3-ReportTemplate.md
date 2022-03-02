@@ -14,7 +14,14 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…
+In this lab we were tasked with computing the testing coverage of our previous test suite on both the Range and DataUtilities modules of JFreeChart. In doing so we would make a benchmark and compare against the acceptable standards set our before the assignment. The following are the standards we wish to achieve in this lab:
+
+Three coverage metrics
+Statement - 90%
+Branch - 70%
+Condition (if tool doesn’t support, you can change metric e.g. you might decide to replace condition coverage with method coverage, if you are using EclEmma) - 60%
+
+
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
@@ -22,7 +29,18 @@ Text…
 
 # 3 A detailed description of the testing strategy for the new unit test
 
-Text…
+Testing Plan
+We will be choosing to study the calculateColumnTotal() from DataUtilities and shift() from Range.
+
+We will first assess the coverage statistics for our current test suite in the metrics of statement, branch, and condition.
+In order to fully grasp how the coverage works we will recompute the coverage manually by hand.
+
+This will involve constructing a CFG and the corresponding DFG in order to seek out paths/pairs which we are not covering. These omissions will then be worked into our new test suite.
+
+Furthermore, we will again retest the metrics after the introduction of the new test cases in order to evaluate the changed coverage of our test suite.
+
+We will then provide a brief analysis and lessons learned from this assignment.
+
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
@@ -33,7 +51,7 @@ Text…
 ### Statement coverage
 ### Branch coverage
 ### Method coverage
-![image](https://user-images.githubusercontent.com/75228264/154872707-3dbecd61-7223-44f7-a6ec-d6b39ff73f79.png)
+
 
 ## RangeTest
 ### Statement coverage
