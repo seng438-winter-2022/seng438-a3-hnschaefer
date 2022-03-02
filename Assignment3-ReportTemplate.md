@@ -55,11 +55,11 @@ Text…
 
 ## DataUtilitiesTest
 We tested:
-1. scale()
-2. shift() 
-3. getLength()
-4. getUpperBound()
-5. getLowerBound()
+1. calculateColumnTotal()
+2. calculateRowTotal()
+3. clone()
+4. createNumberArray()
+5. createNumberArray2D()
 
 #### pre-change
 ### Statement coverage
@@ -80,11 +80,11 @@ We tested:
 
 ## RangeTest
 We tested:
-1. calculateColumnTotal()
-2. calculateRowTotal()
-3. clone()
-4. createNumberArray()
-5. createNumberArray2D()
+1. scale()
+2. shift() 
+3. getLength()
+4. getUpperBound()
+5. getLowerBound()
 
 #### pre-change
 ### Statement coverage
