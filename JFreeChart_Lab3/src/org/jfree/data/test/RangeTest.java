@@ -554,7 +554,7 @@ public class RangeTest {
     	}
     	catch (Exception err){
 			assertEquals("IllegalArugmentException error should be thrown",IllegalArgumentException.class, err.getClass());
-		}
+	}
     }
 
     @After
