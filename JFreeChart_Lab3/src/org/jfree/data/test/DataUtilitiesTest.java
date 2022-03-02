@@ -1,4 +1,4 @@
-package org.jfree.data.test;
+package org.jfree.data;
 
 import static org.junit.Assert.*;
 import org.jfree.data.DataUtilities;
@@ -21,7 +21,8 @@ public class DataUtilitiesTest extends DataUtilities {
 	private Mockery mockEmpty;
     private Values2D valuesEmpty;
     private Mockery mockNull;
-    private Values2D valuesNull = null;
+    private Values2D valuesNull;
+
     @BeforeClass public static void setUpBeforeClass() throws Exception {
     }
 
@@ -132,9 +133,32 @@ public class DataUtilitiesTest extends DataUtilities {
           	 {
                  one(valuesEmpty).getRowCount();
                  will(returnValue(0));
-                 // columns
                  one(valuesEmpty).getColumnCount();
                  will(returnValue(0));
+                 one(valuesNeg).getValue(0, 0);
+                 will(returnValue(1));
+                 one(valuesNeg).getValue(1, 0);
+                 will(returnValue(null));
+                 one(valuesNeg).getValue(0, 1);
+                 will(returnValue(1));
+             }
+        });
+
+        // elements are null
+        mockNull = new Mockery();
+        valuesNull = mockNull.mock(Values2D.class);
+        mockNull.checking(new Expectations() {
+          	 {
+                 one(valuesNull).getRowCount();
+                 will(returnValue(1));
+                 one(valuesNull).getColumnCount();
+                 will(returnValue(1));
+                 one(valuesNull).getValue(0, 0);
+                 will(returnValue(null));
+//                 one(valuesNeg).getValue(1, 0);
+//                 will(returnValue(null));
+//                 one(valuesNeg).getValue(0, 1);
+//                 will(returnValue(null));
              }
         });
     }
@@ -190,14 +214,22 @@ public class DataUtilitiesTest extends DataUtilities {
     /* Testing calculate column total method where null Values2D object is passed
      */
     @Test
-    public void calculateColumnTotalForNull() {
+    public void calculateColumnTotalForNullObject() {
     	try{
-            double result = DataUtilities.calculateColumnTotal(valuesNull, 0);
+            double result = DataUtilities.calculateColumnTotal(null, 0);
     	}
     	catch (Exception err){
             assertEquals("IllegalArugmentException error should be thrown",IllegalArgumentException.class, err.getClass());
     	}
         // tear-down: NONE in this test method
+    }
+
+    /* Testing calculate column total method where a Values2D object with a null entry is passed
+     */
+    @Test
+    public void calculateColumnTotalForNullElement() {
+    	double result = DataUtilities.calculateColumnTotal(valuesNull, 0);
+        assertEquals(result, 0, .000000001d);
     }
 
 
@@ -261,6 +293,14 @@ public class DataUtilitiesTest extends DataUtilities {
         // tear-down: NONE in this test method
     }
 
+    /* Testing calculate row total method where a Values2D object with a null entry is passed
+     */
+    @Test
+    public void calculateRowTotalForNullElement() {
+    	double result = DataUtilities.calculateRowTotal(valuesNull, 0);
+        assertEquals(result, 0, .000000001d);
+    }
+
     /* * * * *
      * TESITNG clone
      * * * * */
@@ -313,11 +353,20 @@ public class DataUtilitiesTest extends DataUtilities {
         // tear-down: NONE in this test method
     }
 
-    
+    /* Testing clone method using a 2D array with a null element
+     */
+    @Test
+    public void cloneNullElement() {
+    	double[][] testNullElement = {null};
+        double[][] result = DataUtilities.clone(testNullElement);
+        assertArrayEquals(result, testNullElement);
+    }
+
+
     /* * * * *
     * TESITNG createNumberArray
     * * * * */
-        
+
     //    Empty array
     @Test
     public void createNumberArrayEmpty() {
@@ -328,8 +377,8 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
 
-    //	Array with one value    
-    @Test 
+    //	Array with one value
+    @Test
     public void createNumberArrayOneValue() {
         double [] oneValue= {10.1};
         Number[] testOneArr= {10.1}; //Has same value as on
@@ -370,7 +419,7 @@ public class DataUtilitiesTest extends DataUtilities {
         assertArrayEquals(result, testThreeValues);
     }
 
-   
+
 	//  Array of 3 values, with some large positive and negative numbers
 	@Test
 	public void createNumberArrayThreeValuesBigNum() {
@@ -379,7 +428,7 @@ public class DataUtilitiesTest extends DataUtilities {
 	  	Number [] result= DataUtilities.createNumberArray(threeValues);
 	  	assertEquals(result, testThreeValues);
 	}
-	  
+
 	//Creates a null array- expects to throw exception
 	@Test
 	public void createNumberArrayNull() {
@@ -391,9 +440,9 @@ public class DataUtilitiesTest extends DataUtilities {
 		catch (Exception err){
 			assertEquals("IllegalArugmentException error should be thrown",IllegalArgumentException.class, err.getClass());
 		}
-	}  
+	}
 
-	
+
     /* * * * *
     * TESITNG createNumberArray2D
     * * * * */
@@ -406,12 +455,12 @@ public class DataUtilitiesTest extends DataUtilities {
         assertArrayEquals(result, byThree);
         // tear-down: NONE in this test method
     }
-    
+
     /*
      * One by one array
      */
 
-    @Test 
+    @Test
     public void createNumberArray2DByOnePos() {
         double [][] oneValue= {{1.1}};
     //    	Number [][] testOneValue= {{1.1}};
@@ -419,9 +468,9 @@ public class DataUtilitiesTest extends DataUtilities {
         // verify
         assertArrayEquals(result, oneValue);
     }
-    
+
     /*
-     * Three by three array 
+     * Three by three array
      */
     @Test
     public void createNumberArray2DByThreePos() {
@@ -454,7 +503,7 @@ public class DataUtilitiesTest extends DataUtilities {
         assertArrayEquals(result, byThree);
         // tear-down: NONE in this test method
     }
-    
+
     /*
      * tests a 3 by 5 array containing negative and positive numbers
      */
@@ -470,7 +519,7 @@ public class DataUtilitiesTest extends DataUtilities {
         assertArrayEquals(result, threeByFive);
         // tear-down: NONE in this test method
     }
-    
+
 
     @After
     public void tearDown() throws Exception {
@@ -481,4 +530,3 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
 }
-	

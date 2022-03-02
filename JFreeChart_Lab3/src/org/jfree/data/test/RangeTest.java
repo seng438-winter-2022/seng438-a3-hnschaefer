@@ -544,6 +544,18 @@ public class RangeTest {
         assertEquals("The new range should be -5 to 5", testRange,
         Range.scale(exampleRangeNegPos, 2));
     }
+    
+    /* New test for lab 3 */
+    /* Testing scale method with negative range factor */
+    @Test
+    public void scaleNegPosNeg() {
+    	try {
+	        Range.scale(exampleRangeNegPos, -2);
+    	}
+    	catch (Exception err){
+			assertEquals("IllegalArugmentException error should be thrown",IllegalArgumentException.class, err.getClass());
+	}
+    }
 
     @After
     public void tearDown() throws Exception {
