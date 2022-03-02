@@ -121,7 +121,20 @@ There was overall two group meetings and two individual section meetings for thi
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-Text…
+There were a couple portions which proved more challenging than others. In particular:
+
+1. Understanding documentation well enough to search for branches/statements/methods
+2. Finding and creating the missing tests in order to increase the coverage percentages for our test suite
+3. Deciding what warranted nodes in our CFG
+4. Manually following the DFG and def-use pairs/paths
+5. Dealing with nullptr vs. null values in a multitude of our tests
+
+However, after going through this assignment we have learned quite a bit about:
+
+1. Evaluating different coverage metrics in order to have broader view of the resulting coverage statistics
+2. Learned how to generate CFG and DFG for functions
+3. Demonstrated just how time / effort consuming making the def-use calculations are
+4. Demonstrated the usefulness of the automated testing tools when dealing with multiple coverage metrics
 
 # 10 Comments/feedback on the lab itself
 
