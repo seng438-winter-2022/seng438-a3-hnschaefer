@@ -46,6 +46,25 @@ Furthermore, we will again retest the metrics after the introduction of the new 
 
 We will then provide a brief analysis and lessons learned from this assignment.
 
+## Manual Data Flow Coverage
+#### calculateColumnTotal()
+| Variable | Definition | Use      | DU pairs                                                                                                        | Test method name                                                                        |
+|----------|------------|----------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| data     | 1          | 2, 4, 7  | du(1, 2, data) = { [1,2] } du(1, 4, data) = { [1, 2, 3, 4] } du(1, 7, data) = { [1, 2, 3, 4, 5, 6, 7] }         | all tests including NEW: calculateColumnTotalForNullObject()                            |
+| column   | 1          | 7        | du(1, 7, column) = { [1, 2, 3, 4, 5, 6, 7] }                                                                    | all tests including NEW: calculateColumnTotalForNullObject()                            |
+| total    | 3          | 9, 11    | du(3, 9, total)  = { [3, 4, 5, 6, 7, 8, 9] } du(3, 11, total) = { [3, 4, 5, 6, 11] }                            | all tests except NEW: calculateColumnTotalForNullObject()                               |
+| rowCount | 4          | 6        | du(4, 6, rowCount) = { [4, 5, 6] }                                                                              | calculateColumnTotalForZero() calculateColumnTotalForPos() calculateColumnTotalForNeg() |
+| r        | 5          | 6, 7, 10 | du(5, 6, r)  = { [5, 6] } du(5, 7, r)  = { [5, 6, 7] } du(5, 10, r) = { [5, 6, 7, 8, 10], [5, 6, 7, 8, 9, 10] } | calculateColumnTotalForZero() calculateColumnTotalForPos() calculateColumnTotalForNeg() |
+| n        | 7          | 8, 9     | du(7, 8, n) = { [7, 8] } du(7, 9, n) = { [7, 8, 9] }                                                            | calculateColumnTotalForEmpty() NEW: calculateColumnTotalForNullObject()                 |
+
+#### shift()
+| Variable          | Definition | Use        | DU-pairs                                                                                                                       | Test method name                         |
+|-------------------|------------|------------|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| base              | 1          | 2, 4, 5, 7 | du(1, 2, base) = { [1, 2] } du(1, 4, base) = { [1, 2, 4] } du(1, 5, base) = { [1, 2, 4, 5] } du(1, 7, base) = { [1, 2, 4, 7] } | all shift tests                          |
+| delta             | 1          | 5, 7       | du(1, 5, delta) = { [1, 2, 4, 5] } du(1, 7, delta) = { [1, 2, 4, 7] }                                                          | all shift tests                          |
+| allowZeroCrossing | 1          | 4          | du(1, 4, allowZeroCrossing)  = { [1, 2, 4] }                                                                                   | all tests, particularly shiftPosPosNeg() |
+| Range             | 6          | 6          | du(1, 4, Range)  = { [6] }                                                                                                     | all shift tests                          |
+
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
@@ -90,7 +109,7 @@ We tested:
 ## RangeTest
 We tested:
 1. scale()
-2. shift() 
+2. shift()
 3. getLength()
 4. getUpperBound()
 5. getLowerBound()
