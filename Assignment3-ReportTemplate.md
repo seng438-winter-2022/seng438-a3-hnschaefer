@@ -141,8 +141,23 @@ We tested:
 - Could be misleading for larger programs, as coverage may appear to be 100% but could still have bugs
 
 ## Metrics
-### Pros
-### Cons
+### Branch Pros
+Branch coverage is a very good metric as it has the ability to ensure that all conditions are tested. By doing so we at least know that the path has been traveled at least once if we have 100% coverage.
+
+###  Branch Cons
+Although we test each path, we may not test every input variable and therefore may be led to poor results if given a non-tested input category.
+
+### Statement Pros
+This type of test is very strong in ensuring that each statement is reached by the code. It allows for us to determine paths that are not being taken, or repeat/unused statements in our code.
+
+### Statement Cons
+Statement testing is very shallow, is does not care about conditions, inputs, or outputs nor does it pay any attention to the DU pairs of objects.
+
+### Method Pros
+Method is by far the deepest form of testing. This allows for it to not only test the branches but also individual components of the conditional statements.
+
+### Method Cons
+This is a very painstaking coverage metric to achieve, often involving very specific and custom input parameters. This type of testing therefor should be done mostly for very important or critical portions of the codebase.
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
