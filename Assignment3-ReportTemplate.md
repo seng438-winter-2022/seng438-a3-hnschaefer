@@ -26,9 +26,9 @@ Condition (if tool doesn’t support, you can change metric e.g. you might decid
 # 2 Manual data-flow coverage calculations for X and Y methods
 
 ### CFG of shift()
-![](CFG-shift.png)
+![](CFG- Shift.png)
 ### CFG of calculateColumnTotal()
-![](CFG-calculateColumnTotal.png)
+![](CFG calculateColumnTotal.png)
 ### DFG of shift()
 ### DFG of calculateColumnTotal()
 
