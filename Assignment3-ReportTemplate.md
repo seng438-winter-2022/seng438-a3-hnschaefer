@@ -28,15 +28,15 @@ Condition (if tool doesn’t support, you can change metric e.g. you might decid
 ### DFG of calculateColumnTotal()
 ![](CFG calculateColumnTotal.PNG)
 
-CU: c-use{data, total x 2, n, r x 2, data, column} 8
-PU: p-use{data, r, rowCount, n} 4
-CUc: c-use{data, total x 2, n, r x 2, data, column} 8
-PUc: p-use{data, r, rowCount, n} 4
-CUf: 0, there were no infeasible C-uses
-PUf: 0, there were no infeasible P-uses
+<br>CU: c-use{data, total x 2, n, r x 2, data, column} 8</br>
+<br>PU: p-use{data, r, rowCount, n} 4</br>
+<br>CUc: c-use{data, total x 2, n, r x 2, data, column} 8</br>
+<br>PUc: p-use{data, r, rowCount, n} 4</br>
+<br>CUf: 0, there were no infeasible C-uses</br>
+<br>PUf: 0, there were no infeasible P-uses</br>
 
-(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
-(8 + 4) / ( (8 + 4) - (0 + 0) ) = 1 or 100%
+<br>(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )</br>
+<br>(8 + 4) / ( (8 + 4) - (0 + 0) ) = 1 or 100%</br>
 
 The coverage is 100% using the formula provided in class.
 After going through each test case, we realized that no unit test was going from nodes 8 to 10, however, no c-uses or p-uses were missed. This is because there was no intermediate note that should have been executed between nodes 8 and 10.
@@ -44,15 +44,15 @@ After going through each test case, we realized that no unit test was going from
 ### DGF of shift()
 ![](CFG- Shift.PNG)
 
-CU: c-use{base x 3, delta x 2, range} 6
-PU: p-use{allowZeroCrossing} 1
-CUc: c-use{base x 3, delta x 2, range} 6
-PUc: p-use{allowZeroCrossing} 1
-CUf: 0, there were no infeasible C-uses
-PUf: 0, there were no infeasible P-uses
+<br>CU: c-use{base x 3, delta x 2, range} 6</br>
+<br>PU: p-use{allowZeroCrossing} 1</br>
+<br>CUc: c-use{base x 3, delta x 2, range} 6</br>
+<br>PUc: p-use{allowZeroCrossing} 1</br>
+<br>CUf: 0, there were no infeasible C-uses</br>
+<br>PUf: 0, there were no infeasible P-uses</br>
 
-(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
-(6 + 1) / ( (6 + 1) - (0 + 0) ) = 1 or 100%
+<br>(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )</br>
+<br>(6 + 1) / ( (6 + 1) - (0 + 0) ) = 1 or 100%</br>
 
 The coverage is 100% again using the formula provided in class.
 There were no unit tests going from nodes 2 to 3, but as there were no C-uses or P-uses being missed, the final coverage was 100.
