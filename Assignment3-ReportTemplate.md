@@ -25,12 +25,38 @@ Condition (if tool doesn’t support, you can change metric e.g. you might decid
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-### CFG of shift()
-![](CFG- Shift.PNG)
-### CFG of calculateColumnTotal()
-![](CFG calculateColumnTotal.PNG)
-### DFG of shift()
 ### DFG of calculateColumnTotal()
+![](CFG calculateColumnTotal.PNG)
+
+CU: c-use{data, total x 2, n, r x 2, data, column} 8
+PU: p-use{data, r, rowCount, n} 4
+CUc: c-use{data, total x 2, n, r x 2, data, column} 8
+PUc: p-use{data, r, rowCount, n} 4
+CUf: 0, there were no infeasible C-uses
+PUf: 0, there were no infeasible P-uses
+
+(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
+(8 + 4) / ( (8 + 4) - (0 + 0) ) = 1 or 100%
+
+The coverage is 100% using the formula provided in class.
+After going through each test case, we realized that no unit test was going from nodes 8 to 10, however, no c-uses or p-uses were missed. This is because there was no intermediate note that should have been executed between nodes 8 and 10.
+
+### DGF of shift()
+![](CFG- Shift.PNG)
+
+CU: c-use{base x 3, delta x 2, range} 6
+PU: p-use{allowZeroCrossing} 1
+CUc: c-use{base x 3, delta x 2, range} 6
+PUc: p-use{allowZeroCrossing} 1
+CUf: 0, there were no infeasible C-uses
+PUf: 0, there were no infeasible P-uses
+
+(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
+(6 + 1) / ( (6 + 1) - (0 + 0) ) = 1 or 100%
+
+The coverage is 100% again using the formula provided in class.
+There were no unit tests going from nodes 2 to 3, but as there were no C-uses or P-uses being missed, the final coverage was 100.
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 
@@ -57,20 +83,6 @@ We will then provide a brief analysis and lessons learned from this assignment.
 | r        | 5          | 6, 7, 10 | du(5, 6, r)  = { [5, 6] } du(5, 7, r)  = { [5, 6, 7] } du(5, 10, r) = { [5, 6, 7, 8, 10], [5, 6, 7, 8, 9, 10] } | calculateColumnTotalForZero() calculateColumnTotalForPos() calculateColumnTotalForNeg() |
 | n        | 7          | 8, 9     | du(7, 8, n) = { [7, 8] } du(7, 9, n) = { [7, 8, 9] }                                                            | calculateColumnTotalForEmpty() NEW: calculateColumnTotalForNullObject()                 |
 
-CU: c-use{data, total x 2, n, r x 2, data, column} 8
-PU: p-use{data, r, rowCount, n} 4
-CUc: c-use{data, total x 2, n, r x 2, data, column} 8
-PUc: p-use{data, r, rowCount, n} 4
-CUf: 0, there were no infeasible C-uses
-PUf: 0, there were no infeasible P-uses
-
-(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
-(8 + 4) / ( (8 + 4) - (0 + 0) ) = 1 or 100%
-
-The coverage is 100% using the formula provided in class.
-After going through each test case, we realized that no unit test was going from nodes 8 to 10, however, no c-uses or p-uses were missed. This is because there was no intermediate note that should have been executed between nodes 8 and 10.
-
-
 #### Range: shift() coverage metrics
 | Variable          | Definition | Use        | DU-pairs                                                                                                                       | Test method name                         |
 |-------------------|------------|------------|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
@@ -78,21 +90,6 @@ After going through each test case, we realized that no unit test was going from
 | delta             | 1          | 5, 7       | du(1, 5, delta) = { [1, 2, 4, 5] } du(1, 7, delta) = { [1, 2, 4, 7] }                                                          | all shift tests                          |
 | allowZeroCrossing | 1          | 4          | du(1, 4, allowZeroCrossing)  = { [1, 2, 4] }                                                                                   | all tests, particularly shiftPosPosNeg() |
 | Range             | 6          | 6          | du(1, 4, Range)  = { [6] }                                                                                                     | all shift tests                          |
-
-
-CU: c-use{base x 3, delta x 2, range} 6
-PU: p-use{allowZeroCrossing} 1
-CUc: c-use{base x 3, delta x 2, range} 6
-PUc: p-use{allowZeroCrossing} 1
-CUf: 0, there were no infeasible C-uses
-PUf: 0, there were no infeasible P-uses
-
-(CUc + PUc) / ( (CU + PU) - (CUf + PUf) )
-(6 + 1) / ( (6 + 1) - (0 + 0) ) = 1 or 100%
-
-The coverage is 100% again using the formula provided in class.
-There were no unit tests going from nodes 2 to 3, but as there were no C-uses or P-uses being missed, the final coverage was 100.
-
 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
