@@ -139,6 +139,7 @@ We tested:
 ### Cons
 - Somewhat difficult to set up initially
 - Could be misleading for larger programs, as coverage may appear to be 100% but could still have bugs
+- Mutation testing is not performed
 
 ## Metrics
 ### Pros
@@ -146,7 +147,10 @@ We tested:
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
-Text…
+Requirements-based test generation requires developers to fully understand the system under test as, in order to test, they must be able to outline all functionalities. In previous labs, we first began by understanding the black box outputs of the system, brainstormed different test cases, and identified boundary conditions. Through this method, we were able to follow a systematic guide to comprehensively test specific methods in the DataUtilities and Range class. The main advantage of requirements-based test generation was that it was intuitive and easier to follow; however, as we heavily relied on the javadoc, we made some assumptions and missed to test the full code. For example, we did not test the scale method by passing a negative scale factor as we assumed it was not a valid parameter, but the code was throwing an exception and it was not being tested.
+
+Using coverage-based testing, we were able to identify missing test cases. We had to refer to the javadoc to see the exact statements and branches that were being taken by the methods. Unlike requirements-based testing, the second approach required a strong understanding of the coverage metrics and data flow graphs. Through creating graphs and outlining def-use pairs, we were able to identifying unintuitive cases that were missed while doing requirements-based testing. A disadvantage to coverage testing, on the other hand, is that a score of 100% could mislead developers to believe that the system is fully tested when they have not considered boundary conditions.
+
 
 # 8 A discussion on how the team work/effort was divided and managed
 
