@@ -26,7 +26,7 @@ Condition (if tool doesn’t support, you can change metric e.g. you might decid
 # 2 Manual data-flow coverage calculations for X and Y methods
 
 ### DFG of calculateColumnTotal()
-![](CFG calculateColumnTotal.PNG)
+![](CFG-calcColumnTotal.png)
 
 <br>CU: c-use{data, total x 2, n, r x 2, data, column} 8</br>
 <br>PU: p-use{data, r, rowCount, n} 4</br>
@@ -42,7 +42,7 @@ The coverage is 100% using the formula provided in class.
 After going through each test case, we realized that no unit test was going from nodes 8 to 10, however, no c-uses or p-uses were missed. This is because there was no intermediate note that should have been executed between nodes 8 and 10.
 
 ### DGF of shift()
-![](CFG- Shift.PNG)
+![](CFG-Shift.png)
 
 <br>CU: c-use{base x 3, delta x 2, range} 6</br>
 <br>PU: p-use{allowZeroCrossing} 1</br>
