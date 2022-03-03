@@ -51,13 +51,13 @@ We will then provide a brief analysis and lessons learned from this assignment.
 
 Only four additional tests were necessary to achieve 100% coverage:
 
-scaleNegPosNeg() - Scaling by a negative factor was previously neglected in our initial test suite, as it was indicated in the JavaDoc that the factor must be non-negative. Although the factor should be non-negative to produce a valid range, the error handling should still be tested to have full coverage. This test case improved both statement and branch coverage.
+**scaleNegPosNeg()** - Scaling by a negative factor was previously neglected in our initial test suite, as it was indicated in the JavaDoc that the factor must be non-negative. Although the factor should be non-negative to produce a valid range, the error handling should still be tested to have full coverage. This test case improved both statement and branch coverage.
 
-calculateColumnTotalForNullObject() - A null object was passed to the calculateColumnTotal function to trigger the parameter check for null objects. This was neglected in the original test suite as an error would be thrown, but as above, error handling should still be tested to ensure full coverage.
+**calculateColumnTotalForNullObject()** - A null object was passed to the calculateColumnTotal function to trigger the parameter check for null objects. This was neglected in the original test suite as an error would be thrown, but as above, error handling should still be tested to ensure full coverage.
 
-calculateColumnTotalForNullElement() - The only element of the object passed into calculateColumnTotal is null. As the loop which calculated column totals had an if statement ensuring the element was not null, the branch where a null value was present was taken instead of the previously taken branch, therefore branch coverage was improved.
+**calculateColumnTotalForNullElement()** - The only element of the object passed into calculateColumnTotal is null. As the loop which calculated column totals had an if statement ensuring the element was not null, the branch where a null value was present was taken instead of the previously taken branch, therefore branch coverage was improved.
 
-cloneNullElement() - The only element of a 2D array passed into the clone method was null. As null is not a permitted value in the JavaDoc, this argument was neglected. As above, the error handling must be checked for full coverage. Branch coverage was improved through this method.
+**cloneNullElement()** - The only element of a 2D array passed into the clone method was null. As null is not a permitted value in the JavaDoc, this argument was neglected. As above, the error handling must be checked for full coverage. Branch coverage was improved through this method.
 
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
@@ -113,8 +113,17 @@ We tested:
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-## Pros
-## Cons
+## Tools - EclEmma
+### Pros
+- Can catch test cases that were missed by human testers
+- Considers cases that throw errors, which may have not been considered when making the test suite
+### Cons
+- Somewhat difficult to set up initially
+- Could be misleading for larger programs, as coverage may appear to be 100% but could still have bugs
+
+## Metrics
+### Pros
+### Cons
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
